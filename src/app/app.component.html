@@ -8,10 +8,31 @@
 <div class="row rowma">
   <div class="col-sm-8">
     <div class="card cardOther">
-      <div class="card-body">
-        <h5 class="card-title">
-          Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <div class="card-header">
+        <mat-icon class="icoColor">sports_soccer</mat-icon>
+        <h5 class="card-title cardTitle">Football</h5>
+      </div>
+      <div class="card-body main__table">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"><p>Home Team</p></th>
+              <th scope="col"><p>Home Score</p></th>
+              <th scope="col"><p>Away Team</p></th>
+              <th scope="col"><p>Away Score</p></th>
+              <th scope="col"><p>View</p></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tabrow" *ngFor="let sport of allSportingEvent">
+              <td><p class="ptag">{{sport.homeTeam}}</p></td>
+              <td><p class="ptag">{{sport.homeScore}}</p></td>
+              <td><p class="ptag">{{sport.awayTeam}}</p></td>
+              <td><p class="ptag">{{sport.awayScore}}</p></td>
+              <td><p class="ptag" (click)="returnData(sport.marketId)"><mat-icon class="icoColor">visibility</mat-icon></p></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -19,13 +40,23 @@
     <div class="card cardOther">
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="mart__point__items">
+          <a href="#0box" class="point__box">
+            {{marketUpdate?.home}}
+          </a>
+          <a href="#0box" class="point__box">
+            {{marketUpdate?.draw}}
+          </a>
+          <a href="#0box" class="point__box">
+            {{marketUpdate?.away}}
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<table class="table">
+<!-- <table class="table">
   <thead>
     <tr>
       <th scope="col"><p>ID</p></th>
@@ -44,7 +75,7 @@
       <td><p>{{sport.awayScore}}</p></td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
 <router-outlet></router-outlet>
 

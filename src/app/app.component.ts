@@ -9,11 +9,11 @@ import { SportServiceService } from './sport-service.service';
 export class AppComponent implements OnInit {
 
   allSportingEvent:any;
+  marketUpdate:any;
 
   constructor(
     private SportServiceService: SportServiceService
   ){ }
-
 
   ngOnInit(): void {
     this.SportServiceService.subscribe('/topic/inplay', (idData: any):void =>{
@@ -44,6 +44,16 @@ export class AppComponent implements OnInit {
         });
       });
 
+    });
+  }
+
+
+  returnData(marketId: any){
+    console.log(marketId)
+    this.SportServiceService.subscribe(`/topic/market/${marketId}`, (eventData: any):void =>{
+      let convertedEventData = JSON.parse(eventData);
+      this.marketUpdate = convertedEventData;
+      console.log(this.marketUpdate)
     });
   }
 

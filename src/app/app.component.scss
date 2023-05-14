@@ -16,9 +16,6 @@
 h5, p {
   color: var(--white);
   font-family: "Inter", sans-serif;
-  margin: 0;
-  font-weight: 400;
-  margin-bottom: 5px;
 }
 
 .rowma{
@@ -26,3 +23,71 @@ h5, p {
   margin-left: 0px;
   margin-right: 0px;
 }
+
+.icoColor{
+  color: var(--textcolor);
+  font-size: 23px;
+}
+
+.card-header{
+  display: flex;
+  border-bottom: 1px solid var(--textcolor);
+}
+
+.cardTitle{
+  color: var(--textcolor);
+  font-weight: 400;
+  font-size: 20px;
+  margin: 1px 3px;
+}
+
+.tabrow{
+  border-bottom: 1px solid var(--leftpreborder) !important;
+}
+
+.ptag{
+  margin: 10px 0px;
+}
+
+.main__table{
+  padding: 12px 15px 10px;
+}
+
+.main__table .table__wrap .table__items .mart__point__items .point__box {
+  background: var(--pointbox);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  text-align: center;
+}
+
+.point__box {
+  background: var(--pointbox);
+  border-radius: 5px;
+  padding: 15px 5px;
+  display: flex;
+  width: 87px;
+  justify-content: center;
+  align-items: center;
+  height: 67px;
+  text-align: center;
+  transition: all 0.4s;
+}
+
+a {
+  text-decoration: none;
+  margin: 0;
+  color: var(--white);
+}
+
+@media screen and (max-width: 1800px){
+  .point__box {
+    width: 65px;
+    height: 60px;
+  }
+}
+
+
+

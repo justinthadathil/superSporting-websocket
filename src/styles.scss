@@ -6,6 +6,8 @@
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
 :root{
   --body-color: #060C1F;
   --active-color: #09ff8d;
@@ -41,3 +43,6 @@ body {
 	background: var(--body-color);
 	overflow-x: auto;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
