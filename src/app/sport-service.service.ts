@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import * as StockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
 import { environment } from './../environments/environment';

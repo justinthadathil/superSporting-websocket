@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SportServiceService } from './sport-service.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -27,41 +28,39 @@ export class AppComponent implements OnInit {
           //check for duplicate id
           if(checkData.length === 0) {
             //if no then push
-            this.returnMarketDetails(convertedEventData.marketId).then((marketData) => {
+            this.returnMarketDetails(convertedEventData.marketId).subscribe((marketData) => {
               convertedEventData.marketData = marketData;
               sportingEvents.push(convertedEventData);
             });
           }else{
             //if found then update the values
             const index = sportingEvents.findIndex((obj:any) => obj.id === convertedEventData.id);
-            if (index !== -1) {
-              this.returnMarketDetails(convertedEventData.marketId).then((marketData) => {
+            if(index !== -1) {
+              this.returnMarketDetails(convertedEventData.marketId).subscribe((marketData) => {
                 convertedEventData.marketData = marketData;
                 sportingEvents[index] = convertedEventData;
               });
-
             }
           }
 
           if(eventIDs.length === i+1){
             this.allSportingEvent = sportingEvents;
-            console.log(this.allSportingEvent)
           }
         });
       });
-
     });
   }
 
 
   returnMarketDetails(marketId: any){
-    let projProPromise = new Promise((resolve, reject) => {
+    let myObserva = new Observable((dataRec) => {
       this.SportServiceService.subscribe(`/topic/market/${marketId}`, (eventData: any):void =>{
         let convertedEventData = JSON.parse(eventData);
-        resolve(convertedEventData);
+        dataRec.next(convertedEventData);
+        dataRec.complete();
       });
     });
-    return projProPromise;
+    return myObserva;
   }
 
 }
