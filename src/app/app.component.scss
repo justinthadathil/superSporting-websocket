@@ -46,7 +46,7 @@ h5, p {
 }
 
 .ptag{
-  margin: 10px 0px;
+  margin-bottom: 0px;
 }
 
 .main__table{
@@ -89,5 +89,12 @@ a {
   }
 }
 
+.marAuto{
+  margin: auto;
+}
 
-
+.block{
+  height: 60px;
+  display: table-cell;
+  vertical-align: middle;
+}

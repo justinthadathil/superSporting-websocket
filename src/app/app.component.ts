@@ -27,19 +27,25 @@ export class AppComponent implements OnInit {
           //check for duplicate id
           if(checkData.length === 0) {
             //if no then push
-            sportingEvents.push(convertedEventData);
+            this.returnMarketDetails(convertedEventData.marketId).then((marketData) => {
+              convertedEventData.marketData = marketData;
+              sportingEvents.push(convertedEventData);
+            });
           }else{
             //if found then update the values
-            console.log('old vales', checkData);
-            console.log('new values', convertedEventData);
             const index = sportingEvents.findIndex((obj:any) => obj.id === convertedEventData.id);
             if (index !== -1) {
-              sportingEvents[index] = convertedEventData;
+              this.returnMarketDetails(convertedEventData.marketId).then((marketData) => {
+                convertedEventData.marketData = marketData;
+                sportingEvents[index] = convertedEventData;
+              });
+
             }
           }
 
           if(eventIDs.length === i+1){
             this.allSportingEvent = sportingEvents;
+            console.log(this.allSportingEvent)
           }
         });
       });
@@ -48,13 +54,14 @@ export class AppComponent implements OnInit {
   }
 
 
-  returnData(marketId: any){
-    console.log(marketId)
-    this.SportServiceService.subscribe(`/topic/market/${marketId}`, (eventData: any):void =>{
-      let convertedEventData = JSON.parse(eventData);
-      this.marketUpdate = convertedEventData;
-      console.log(this.marketUpdate)
+  returnMarketDetails(marketId: any){
+    let projProPromise = new Promise((resolve, reject) => {
+      this.SportServiceService.subscribe(`/topic/market/${marketId}`, (eventData: any):void =>{
+        let convertedEventData = JSON.parse(eventData);
+        resolve(convertedEventData);
+      });
     });
+    return projProPromise;
   }
 
 }

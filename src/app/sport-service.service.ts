@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import * as StockJS from 'sockjs-client';
 import * as Stomp from 'stompjs';
+import { environment } from './../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SportServiceService {
 
-  socket = new StockJS('http://ec2-18-130-236-146.eu-west-2.compute.amazonaws.com:8080/sportsbook');
+  socket = new StockJS(environment.socketEndpoint);
   stompClient = Stomp.over(this.socket);
 
   subscribe(topic: string, callback: any): void{

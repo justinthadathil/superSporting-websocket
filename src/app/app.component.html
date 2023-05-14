@@ -6,7 +6,7 @@
   </div>
 </nav>
 <div class="row rowma">
-  <div class="col-sm-8">
+  <div class="col-sm-11 marAuto">
     <div class="card cardOther">
       <div class="card-header">
         <mat-icon class="icoColor">sports_soccer</mat-icon>
@@ -20,62 +20,60 @@
               <th scope="col"><p>Home Score</p></th>
               <th scope="col"><p>Away Team</p></th>
               <th scope="col"><p>Away Score</p></th>
-              <th scope="col"><p>View</p></th>
+              <th scope="col"><p>Home</p></th>
+              <th scope="col"><p>Draw</p></th>
+              <th scope="col"><p>Away</p></th>
             </tr>
           </thead>
           <tbody>
             <tr class="tabrow" *ngFor="let sport of allSportingEvent">
-              <td><p class="ptag">{{sport.homeTeam}}</p></td>
-              <td><p class="ptag">{{sport.homeScore}}</p></td>
-              <td><p class="ptag">{{sport.awayTeam}}</p></td>
-              <td><p class="ptag">{{sport.awayScore}}</p></td>
-              <td><p class="ptag" (click)="returnData(sport.marketId)"><mat-icon class="icoColor">visibility</mat-icon></p></td>
+              <td>
+                <div class="block">
+                  <p class="ptag">{{sport.homeTeam}}</p>
+                </div>
+              </td>
+              <td>
+                <div class="block">
+                  <p class="ptag">{{sport.homeScore}}</p>
+                </div>
+              </td>
+              <td>
+                <div class="block">
+                  <p class="ptag">{{sport.awayTeam}}</p>
+                </div>
+              </td>
+              <td>
+                <div class="block">
+                  <p class="ptag">{{sport.awayScore}}</p>
+                </div>
+              </td>
+              <td>
+                <div class="mart__point__items">
+                  <a href="#0box" class="point__box">
+                    {{sport.marketData.home}}
+                  </a>
+                </div>
+              </td>
+              <td>
+                <div class="mart__point__items">
+                  <a href="#0box" class="point__box">
+                    {{sport.marketData.draw}}
+                  </a>
+                </div>
+              </td>
+              <td>
+                <div class="mart__point__items">
+                  <a href="#0box" class="point__box">
+                    {{sport.marketData.away}}
+                  </a>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
-    <div class="card cardOther">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <div class="mart__point__items">
-          <a href="#0box" class="point__box">
-            {{marketUpdate?.home}}
-          </a>
-          <a href="#0box" class="point__box">
-            {{marketUpdate?.draw}}
-          </a>
-          <a href="#0box" class="point__box">
-            {{marketUpdate?.away}}
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
-
-<!-- <table class="table">
-  <thead>
-    <tr>
-      <th scope="col"><p>ID</p></th>
-      <th scope="col"><p>Home Team</p></th>
-      <th scope="col"><p>Home Score</p></th>
-      <th scope="col"><p>Away Team</p></th>
-      <th scope="col"><p>Away Score</p></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let sport of allSportingEvent">
-      <td><p>{{sport.id}}</p></td>
-      <td><p>{{sport.homeTeam}}</p></td>
-      <td><p>{{sport.homeScore}}</p></td>
-      <td><p>{{sport.awayTeam}}</p></td>
-      <td><p>{{sport.awayScore}}</p></td>
-    </tr>
-  </tbody>
-</table> -->
-
 <router-outlet></router-outlet>
 
