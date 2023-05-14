@@ -1,0 +1,28 @@
+.header-section {
+  width: 100%;
+  background-color: var(--header);
+  padding: 30px;
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+}
+
+.cardOther {
+  background: var(--slidebox);
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+h5, p {
+  color: var(--white);
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.rowma{
+  margin-top: 15px;
+  margin-left: 0px;
+  margin-right: 0px;
+}

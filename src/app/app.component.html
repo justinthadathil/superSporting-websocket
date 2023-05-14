@@ -1,20 +1,47 @@
+<nav class="navbar navbar-expand-lg header-section">
+  <div class="logo-menu px-2">
+    <a href="index.html" class="logo">
+        <img src="https://pixner.net/sportsodds/sportsbet/assets/img/logo/logo.png" alt="logo">
+    </a>
+  </div>
+</nav>
+<div class="row rowma">
+  <div class="col-sm-8">
+    <div class="card cardOther">
+      <div class="card-body">
+        <h5 class="card-title">
+          Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card cardOther">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">homeTeam</th>
-      <th scope="col">homeScore</th>
-      <th scope="col">awayTeam</th>
-      <th scope="col">awayScore</th>
+      <th scope="col"><p>ID</p></th>
+      <th scope="col"><p>Home Team</p></th>
+      <th scope="col"><p>Home Score</p></th>
+      <th scope="col"><p>Away Team</p></th>
+      <th scope="col"><p>Away Score</p></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let sport of allSportingEvent">
-      <td>{{sport.id}}</td>
-      <td>{{sport.homeTeam}}</td>
-      <td>{{sport.homeScore}}</td>
-      <td>{{sport.awayTeam}}</td>
-      <td>{{sport.awayScore}}</td>
+      <td><p>{{sport.id}}</p></td>
+      <td><p>{{sport.homeTeam}}</p></td>
+      <td><p>{{sport.homeScore}}</p></td>
+      <td><p>{{sport.awayTeam}}</p></td>
+      <td><p>{{sport.awayScore}}</p></td>
     </tr>
   </tbody>
 </table>
