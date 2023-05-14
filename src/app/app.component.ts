@@ -53,14 +53,14 @@ export class AppComponent implements OnInit {
 
 
   returnMarketDetails(marketId: any){
-    let myObserva = new Observable((dataRec) => {
+    let marketDataObs = new Observable((dataRec) => {
       this.SportServiceService.subscribe(`/topic/market/${marketId}`, (eventData: any):void =>{
         let convertedEventData = JSON.parse(eventData);
         dataRec.next(convertedEventData);
         dataRec.complete();
       });
     });
-    return myObserva;
+    return marketDataObs;
   }
 
 }
