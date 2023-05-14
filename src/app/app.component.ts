@@ -8,7 +8,7 @@ import { SportServiceService } from './sport-service.service';
 })
 export class AppComponent implements OnInit {
 
-  inplayList = [];
+  allSportingEvent:any;
 
   constructor(
     private SportServiceService: SportServiceService
@@ -16,17 +16,34 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.SportServiceService.subscribe('/topic/inplay', (data: any):void =>{
-      this.inplayList = JSON.parse(data)
-      console.log(this.inplayList)
+    this.SportServiceService.subscribe('/topic/inplay', (idData: any):void =>{
+      //get list of the Ids of the sport events currently considered live.
+      let eventIDs = JSON.parse(idData);
+      let sportingEvents:any = [];
+      eventIDs.map((elm:any, i:number) => {
+        this.SportServiceService.subscribe(`/topic/event/${elm.id}`, (eventData: any):void =>{
+          let convertedEventData = JSON.parse(eventData);
+          let checkData:any = sportingEvents.filter((obj: any) => obj.id === elm.id);
+          //check for duplicate id
+          if(checkData.length === 0) {
+            //if no then push
+            sportingEvents.push(convertedEventData);
+          }else{
+            //if found then update the values
+            console.log('old vales', checkData);
+            console.log('new values', convertedEventData);
+            const index = sportingEvents.findIndex((obj:any) => obj.id === convertedEventData.id);
+            if (index !== -1) {
+              sportingEvents[index] = convertedEventData;
+            }
+          }
 
-      this.inplayList.map((elm:any) => {
-        console.log(elm.id)
-
-        this.SportServiceService.subscribe(`/topic/event/${elm.id}`, (data2: any):void =>{
-          console.log(data2)
-        })
+          if(eventIDs.length === i+1){
+            this.allSportingEvent = sportingEvents;
+          }
+        });
       });
+
     });
   }
 

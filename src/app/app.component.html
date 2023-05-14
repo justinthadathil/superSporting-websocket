@@ -1,2 +1,23 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">homeTeam</th>
+      <th scope="col">homeScore</th>
+      <th scope="col">awayTeam</th>
+      <th scope="col">awayScore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sport of allSportingEvent">
+      <td>{{sport.id}}</td>
+      <td>{{sport.homeTeam}}</td>
+      <td>{{sport.homeScore}}</td>
+      <td>{{sport.awayTeam}}</td>
+      <td>{{sport.awayScore}}</td>
+    </tr>
+  </tbody>
+</table>
+
 <router-outlet></router-outlet>
 
